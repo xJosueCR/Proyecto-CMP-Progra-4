@@ -15,6 +15,7 @@ import java.util.ArrayList;
  */
 public class Actividad {
     private String id;
+    private String ola;
     private int duracion;
     private List<Relacion> relaciones;
 
@@ -47,6 +48,7 @@ public class Actividad {
 
     public void setRelaciones(List<Relacion> listaRelacion) {
         this.relaciones = listaRelacion;
+        
     }
 
     
