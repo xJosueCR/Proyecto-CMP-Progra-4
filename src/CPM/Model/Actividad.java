@@ -49,6 +49,12 @@ public class Actividad {
         this.relaciones = listaRelacion;
         
     }
+    public void addRelacion(Relacion _relacion){
+        this.relaciones.add(_relacion);
+    }
+    public String toStringRelaciones(){
+        return this.relaciones.toString();
+    }
 
     
 }

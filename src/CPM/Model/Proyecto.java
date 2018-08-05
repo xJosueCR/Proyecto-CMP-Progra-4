@@ -26,4 +26,11 @@ public class Proyecto {
         return a;
     }
     
+    public String toStringActividades()
+    {
+        
+       return actividades.toString();
+    }
+  
+    
 }

@@ -55,9 +55,9 @@ public class Application {
         Relacion r;
         Proyecto p;
         Actividad g;
-        p = new Proyecto();
-        g = new Actividad(id,duracion);
-        r = new Relacion("s",g);
+        p= new Proyecto();
+        //g = new Actividad(id,duracion);
+       // r = new Relacion("s",g);
         String id, idAct = "s";
         int duracion = 0;
         
@@ -72,7 +72,9 @@ public class Application {
             Node n = as.item(i);
                 if(n.getNodeType() == Node.ELEMENT_NODE){
                     Element a = (Element) n;
-                    System.out.println("("+a.getAttribute("id") + ", " + Integer.parseInt(a.getAttribute("duracion"))+")");
+                    g = new Actividad(a.getAttribute("id"),Integer.parseInt(a.getAttribute("duracion")));
+                    p.addActividad(a.getAttribute("id"), g);
+                    //System.out.println("("+a.getAttribute("id") + ", " + Integer.parseInt(a.getAttribute("duracion"))+")");
                 }
         }
         as = doc.getElementsByTagName("Relacion");
@@ -80,7 +82,10 @@ public class Application {
             Node n = as.item(i);
                 if (n.getNodeType() == Node.ELEMENT_NODE){
                     Element a = (Element) n;
-                    System.out.println(a.getAttribute("actividad") + " ===> " + a.getAttribute("sucesor"));
+    
+                    r = new Relacion(a.getAttribute("actividad"), p.buscarActividad(a.getAttribute("sucesor")));
+                    p.buscarActividad(a.getAttribute("sucesor")).addRelacion(r);
+                    //System.out.println(a.getAttribute("actividad") + " ===> " + a.getAttribute("sucesor"));
                 }
                 
         }
@@ -90,7 +95,8 @@ public class Application {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         // TODO code application logic here
         String s = "datos.xml";
         
