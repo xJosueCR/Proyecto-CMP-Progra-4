@@ -13,6 +13,7 @@ package CPM.Model;
 public class Relacion {
     private String sucesor;
     private Actividad act;
+    private String x;
 
     public Relacion(String sucesor, Actividad act) {
         this.sucesor = sucesor;
