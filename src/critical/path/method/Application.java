@@ -19,7 +19,7 @@ import org.w3c.dom.NodeList;
  */
 public class Application {
     
-    public void read(String path) throws Exception{
+    public static void read(String path) throws Exception{
         DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
         Document doc = docBuilder.parse(new File(path));
@@ -50,6 +50,14 @@ public class Application {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        String s = "datos.xml";
+        
+        try{
+        read(s);
+        }
+        catch(Exception e){
+            System.out.println("Exception occurred");
+        }
     }
     
 }
