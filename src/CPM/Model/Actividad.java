@@ -53,6 +53,7 @@ public class Actividad {
         this.relaciones.add(_relacion);
     }
     public String toStringRelaciones(){
+        
         return this.relaciones.toString();
     }
 

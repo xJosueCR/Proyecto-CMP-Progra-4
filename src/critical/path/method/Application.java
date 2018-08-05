@@ -74,6 +74,9 @@ public class Application {
                     Element a = (Element) n;
                     g = new Actividad(a.getAttribute("id"),Integer.parseInt(a.getAttribute("duracion")));
                     p.addActividad(a.getAttribute("id"), g);
+                    //Impresion de elementos 
+                    //p.toStringActividades();
+                    
                     //System.out.println("("+a.getAttribute("id") + ", " + Integer.parseInt(a.getAttribute("duracion"))+")");
                 }
         }
@@ -86,9 +89,13 @@ public class Application {
                     r = new Relacion(a.getAttribute("actividad"), p.buscarActividad(a.getAttribute("sucesor")));
                     p.buscarActividad(a.getAttribute("sucesor")).addRelacion(r);
                     //System.out.println(a.getAttribute("actividad") + " ===> " + a.getAttribute("sucesor"));
+                    
                 }
                 
         }
+        System.out.println(p.toStringActividades());
+        
+       // g.toStringRelaciones();
         
     }
     
@@ -99,13 +106,23 @@ public class Application {
     {
         // TODO code application logic here
         String s = "datos.xml";
-        
+         System.out.println("Este es una lectura : ");
         try{
         readAndPrint(s);
+        }
+        catch(Exception e)
+        {
+            System.out.println("Exception occurred");
+            
+        }
+        System.out.println("Esto son objetos : ");
+        try{
+        read(s);
         }
         catch(Exception e){
             System.out.println("Exception occurred");
         }
+        
     }
     
 }
