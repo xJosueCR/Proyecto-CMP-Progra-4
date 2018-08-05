@@ -58,8 +58,6 @@ public class Application {
         p= new Proyecto();
         //g = new Actividad(id,duracion);
        // r = new Relacion("s",g);
-        String id, idAct = "s";
-        int duracion = 0;
         
         DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
@@ -74,8 +72,6 @@ public class Application {
                     Element a = (Element) n;
                     g = new Actividad(a.getAttribute("id"),Integer.parseInt(a.getAttribute("duracion")));
                     p.addActividad(a.getAttribute("id"), g);
-                    //Impresion de elementos 
-                    //p.toStringActividades();
                     
                     //System.out.println("("+a.getAttribute("id") + ", " + Integer.parseInt(a.getAttribute("duracion"))+")");
                 }
@@ -87,14 +83,16 @@ public class Application {
                     Element a = (Element) n;
     
                     r = new Relacion(a.getAttribute("actividad"), p.buscarActividad(a.getAttribute("sucesor")));
-                    p.buscarActividad(a.getAttribute("sucesor")).addRelacion(r);
+                    p.buscarActividad(a.getAttribute("actividad")).addRelacion(r);
                     //System.out.println(a.getAttribute("actividad") + " ===> " + a.getAttribute("sucesor"));
                     
                 }
                 
         }
-        System.out.println(p.toStringActividades());
-        
+        //System.out.println(p.toStringActividades());
+//        System.out.println(p.buscarActividad("A").getDuracion());
+//        System.out.println(p.buscarActividad("C").getRelaciones().get(0).getIdActividad());
+//        System.out.println(p.buscarActividad("C").getRelaciones().get(1).getIdActividad());
        // g.toStringRelaciones();
         
     }
