@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package critical.path.method;
+import CPM.Model.*;
 
 import java.io.File;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -19,7 +20,7 @@ import org.w3c.dom.NodeList;
  */
 public class Application {
     
-    public static void read(String path) throws Exception{
+    public static void readAndPrint(String path) throws Exception{
         DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
         Document doc = docBuilder.parse(new File(path));
@@ -45,6 +46,47 @@ public class Application {
         }
         
     }
+
+
+    
+    
+    public static void read(String path) throws Exception{
+
+        Relacion r;
+        Proyecto p;
+        Actividad g;
+        p = new Proyecto();
+        g = new Actividad(id,duracion);
+        r = new Relacion("s",g);
+        String id, idAct = "s";
+        int duracion = 0;
+        
+        DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
+        Document doc = docBuilder.parse(new File(path));
+        doc.getDocumentElement().normalize();
+        
+        
+        NodeList as = doc.getElementsByTagName("Actividad");
+        for (int i=0; i<as.getLength(); i++){
+            Node n = as.item(i);
+                if(n.getNodeType() == Node.ELEMENT_NODE){
+                    Element a = (Element) n;
+                    System.out.println("("+a.getAttribute("id") + ", " + Integer.parseInt(a.getAttribute("duracion"))+")");
+                }
+        }
+        as = doc.getElementsByTagName("Relacion");
+        for(int i=0; i<as.getLength(); i++){
+            Node n = as.item(i);
+                if (n.getNodeType() == Node.ELEMENT_NODE){
+                    Element a = (Element) n;
+                    System.out.println(a.getAttribute("actividad") + " ===> " + a.getAttribute("sucesor"));
+                }
+                
+        }
+        
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -53,7 +95,7 @@ public class Application {
         String s = "datos.xml";
         
         try{
-        read(s);
+        readAndPrint(s);
         }
         catch(Exception e){
             System.out.println("Exception occurred");

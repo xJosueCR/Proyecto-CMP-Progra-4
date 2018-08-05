@@ -11,29 +11,29 @@ package CPM.Model;
  * @author david
  */
 public class Relacion {
-    private String sucesor;
-    private Actividad act;
+    private String idActividad;
+    private Actividad sucesor;
     private String x;
 
-    public Relacion(String sucesor, Actividad act) {
+    public Relacion(String actividad, Actividad sucesor) {
+        this.idActividad = actividad;
         this.sucesor = sucesor;
-        this.act = act;
     }
 
-    public String getSucesor() {
+    public Actividad getSucesor() {
         return sucesor;
     }
 
-    public void setSucesor(String sucesor) {
+    public void setSucesor(Actividad sucesor) {
         this.sucesor = sucesor;
     }
 
-    public Actividad getAct() {
-        return act;
+    public String getIdActividad() {
+        return idActividad;
     }
 
-    public void setAct(Actividad act) {
-        this.act = act;
+    public void setIdActividad(String act) {
+        this.idActividad = act;
     }
     
 }
